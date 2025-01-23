@@ -10,6 +10,7 @@ dependencies = [
     { name = "flask" },
     { name = "kubernetes" },
     { name = "loguru" },
+    { name = "metacontroller-api" },
     { name = "python-jsonpath" },
     { name = "pyyaml" },
     { name = "requests" },
@@ -31,6 +32,7 @@ requires-dist = [
     { name = "flask", specifier = ">=3.1.0" },
     { name = "kubernetes", specifier = ">=31.0.0" },
     { name = "loguru", specifier = ">=0.7.3" },
+    { name = "metacontroller-api", specifier = ">=0.1.2" },
     { name = "python-jsonpath", specifier = ">=1.2.2" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "requests", specifier = ">=2.32.3" },
@@ -304,6 +306,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba", size = 8729 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979 },
+]
+
+[[package]]
+name = "metacontroller-api"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "flask" },
+    { name = "loguru" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1a/e8/43a9ef45862e2a69e711ed6a862d725bf1624f649b298a67043f9c8ccef1/metacontroller_api-0.1.2.tar.gz", hash = "sha256:abe9bb2e5069c5b55415f22a4b7e74b0f0ac7c7abd50045d5ff2f7bb76b95bd9", size = 12866 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f1/1b/bfd86223b9007d48a02fa600f5ac7243a40b50526e6bda1f233cccc63f12/metacontroller_api-0.1.2-py3-none-any.whl", hash = "sha256:343d5b180bb5d5de4f539168c73a5dff9867ee7c5929b957c52defd632ac30dc", size = 5954 },
 ]
 
 [[package]]

@@ -8,10 +8,10 @@ from databind.json import load as deserialize
 from kubernetes.client.api_client import ApiClient
 from kubernetes.config import load_config  # type: ignore[attr-defined]
 from loguru import logger
+from metacontroller_api.contrib.flask import MetacontrollerBlueprint
 from typer import Argument, Option, Typer
 
 from applicationmapper import ApplicationMapperController, ApplicationMapperSpec, ExecutionContext, JsonValue
-from metacontroller_api import to_blueprint
 
 app = Typer(
     no_args_is_help=True,
@@ -88,7 +88,7 @@ def execute(
 def run() -> None:
     controller = ApplicationMapperController()
     app = flask.Flask(__name__)
-    app.register_blueprint(to_blueprint(controller))
+    app.register_blueprint(MetacontrollerBlueprint(controller))
     app.run("0.0.0.0", 8000)
 
 

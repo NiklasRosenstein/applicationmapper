@@ -14,8 +14,8 @@ from databind.json import load as deserialize
 from kubernetes.client import CoreV1Api
 from kubernetes.client.api_client import ApiClient
 from loguru import logger
+from metacontroller_api import CompositeController, CustomizeRequest, CustomizeResponse, Resource, ResourceRule, Status
 
-from metacontroller_api import CompositeController, Resource, ResourceRule, Status
 from utils import enumerate_lines, indent
 
 # Note that the order here is important due to https://github.com/NiklasRosenstein/python-databind/issues/74.
@@ -217,7 +217,7 @@ class ApplicationMapperController(CompositeController):
     Implements a Metacontroller `CompositeController` to manage our [`ApplicationMapperSpec`] resource.
     """
 
-    def customize(self, request: CompositeController.CustomizeRequest) -> CompositeController.CustomizeResponse:
+    def customize(self, request: CustomizeRequest) -> CustomizeResponse:
         """
         We use the customize hook to tell Metacontroller which additional resuorces we're interested in when
         reconciling an `ApplicationMapper` resource. The resources that match the rules we return here are
