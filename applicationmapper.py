@@ -156,9 +156,11 @@ class ApplicationMapperSpec:
             try:
                 result = subprocess.run(command, text=True, capture_output=True, check=True)
             except subprocess.CalledProcessError as e:
+                # TODO: This may reveal sensitive data in logs, esp. the values.
                 e.add_note(f"stdout:\n{indent(e.stdout)}")
                 e.add_note(f"stderr:\n{indent(e.stderr)}")
                 e.add_note(f"template:\n{indent(enumerate_lines(self.helmTemplate))}\n")
+                e.add_note(f"values:\n{indent(values_file.read_text())}")
                 e.add_note("note:\n  set the `HELM_DEBUG=true` to pass the --debug flag.")
                 raise
 
@@ -252,7 +254,7 @@ class ApplicationMapperController(CompositeController):
         except Exception as e:
             status = {"state": "Error", "error": str(e)}
             children = []
-            logger.error("An unhandled exception occurred in the sync hook: {}", e)
+            logger.exception("An unhandled exception occurred in the sync hook: {}", e)
 
         status["lastSyncTime"] = datetime.now(timezone.utc).isoformat()
         status["lastSyncDuration"] = time.perf_counter() - tstart
