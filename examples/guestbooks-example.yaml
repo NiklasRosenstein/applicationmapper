@@ -39,4 +39,8 @@ spec:
           - ServerSideApply=true
           - FailOnSharedResource=true
           - RespectIgnoreDifferences=true
+        managedNamespaceMetadata:
+          labels:
+            created-by: argocd
+            guestbook/subscription-id: {{ $sub.subscriptionId }}
     {{- end }}
