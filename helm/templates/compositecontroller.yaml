@@ -10,8 +10,8 @@ spec:
     apiVersion: {{ .Values.crds.group }}/v1alpha1
     resource: applicationmappers
   childResources:
-    - apiVersion: argoproj.io/v1alpha1
-      resource: applications
+    - apiVersion: v1
+      resource: namespaces
       updateStrategy:
         method: InPlace
     - apiVersion: v1
@@ -20,6 +20,10 @@ spec:
         method: InPlace
     - apiVersion: v1
       resource: configmaps
+      updateStrategy:
+        method: InPlace
+    - apiVersion: argoproj.io/v1alpha1
+      resource: applications
       updateStrategy:
         method: InPlace
   generateSelector: true
