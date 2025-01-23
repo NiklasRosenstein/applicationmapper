@@ -11,6 +11,22 @@ This direectory contains resources to help you set up a testing environment.
 
 ## Getting started
 
+### Setting up a remote Kind cluster
+
+Setting up a local Kind cluster is straight forward, but if you have a remote machine then you need to remember to give
+it the right API server address:
+
+```console
+$ cat <<EOF | kind create cluster --image=kindest/node:v1.23.0 --name remote --config=-
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  apiServerAddress: "49.13.117.103"
+  apiServerPort: 6443
+EOF
+$ cat ~/.kube/config
+```
+
 ### Install core components
 
 The [base/](./base/) directory contains Nyl manifests for installing the following base components:
