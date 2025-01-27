@@ -46,6 +46,11 @@ fmt = "uv run ruff format . && uv run ruff check --fix ."
 
 [tool.slap.release]
 pre-commit = "uv sync && git add uv.lock"
+references = [
+  {file = "helm/Chart.yaml", pattern = "version: \"{version}\""},
+  {file = "helm/Chart.yaml", pattern = "appVersion: \"{version}\""},
+  {file = "helm/values.yaml", pattern = "tag: \"{version}\""},
+]
 
 [build-system]
 build-backend = "hatchling.build"
