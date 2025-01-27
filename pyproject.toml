@@ -14,7 +14,7 @@ description = "Implements the `ApplicationMapper` CRD on top of Metacontroller."
 name = "applicationmapper"
 readme = "README.md"
 requires-python = ">=3.13"
-version = "0.2.0"
+version = "0.3.0"
 
 [project.scripts]
 applicationmapper = "main:app"
@@ -43,6 +43,9 @@ ruff = "uv run ruff check . && uv run ruff format --check ."
 
 [tool.slap.run]
 fmt = "uv run ruff format . && uv run ruff check --fix ."
+
+[tool.slap.release]
+pre-commit = "uv sync && git add uv.lock"
 
 [build-system]
 build-backend = "hatchling.build"
