@@ -37,9 +37,6 @@ extend-select = ["I"]
 [tool.mypy]
 strict = true
 
-[tool.slap.release]
-branch = "main"
-
 [tool.slap.test]
 mypy = "uv run mypy ."
 ruff = "uv run ruff check . && uv run ruff format --check ."
