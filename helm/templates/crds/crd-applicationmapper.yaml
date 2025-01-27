@@ -37,19 +37,10 @@ spec:
             status:
               type: object
               x-kubernetes-preserve-unknown-fields: true
-              properties:
-                lastSyncTime:
-                  format: date-time
-                  type: string
-                lastSyncDuration:
-                  type: number
       additionalPrinterColumns:
         - name: Age
           type: date
           jsonPath: .metadata.creationTimestamp
-        - name: Last Sync
-          type: date
-          jsonPath: .status.lastSyncTime
         - name: State
           type: string
           jsonPath: .status.state

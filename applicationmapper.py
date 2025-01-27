@@ -240,7 +240,6 @@ class ApplicationMapperController(CompositeController):
         return {"relatedResources": list(secret_namespace_rules.values())}
 
     def sync(self, request: CompositeController.SyncRequest) -> CompositeController.SyncResponse:
-        tstart = time.perf_counter()
         try:
             spec = deserialize(request["parent"].__getitem__("spec"), ApplicationMapperSpec)
             secrets: ExecutionContext.NamespacedNamedSecrets = {}
@@ -256,6 +255,4 @@ class ApplicationMapperController(CompositeController):
             children = []
             logger.exception("An unhandled exception occurred in the sync hook: {}", e)
 
-        status["lastSyncTime"] = datetime.now(timezone.utc).isoformat()
-        status["lastSyncDuration"] = time.perf_counter() - tstart
         return {"children": children, "status": status, "resyncAfterSeconds": 0}

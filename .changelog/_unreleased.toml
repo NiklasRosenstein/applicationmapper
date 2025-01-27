@@ -1,0 +1,5 @@
+[[entries]]
+id = "cc89eb88-cc97-40c3-8cba-65d741a4aa23"
+type = "fix"
+description = "Remove `lastSyncTime` and `lastSyncDuration` properties from `ApplicationMapper` resource status as it immediately triggers another sync"
+author = "@NiklasRosenstein"
