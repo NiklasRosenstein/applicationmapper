@@ -15,6 +15,6 @@ app.kubernetes.io/version: "{{ default .Chart.AppVersion .Values.deployment.imag
 {{- if not .Values.deployment.install -}}
 {{ fail "Because `.deployment.install` is set to `false`, you must specify a `.controller.webhook.baseUrl`" }}
 {{- end -}}
-http://{{ .Release.Name }}.{{ .Release.Namespace }}.svc
+http://{{ .Release.Name }}.{{ .Release.Namespace }}.svc:8000
 {{- end -}}
 {{- end }}

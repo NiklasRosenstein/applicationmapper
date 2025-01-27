@@ -24,6 +24,9 @@ spec:
         - name: main
           image: {{ $image.repository }}:{{ $image.tag }}
           imagePullPolicy: {{ $image.pullPolicy }}
+          command:
+          - applicationmapper
+          - run
           ports:
             - name: http
               containerPort: 8000
