@@ -246,7 +246,7 @@ class ApplicationMapperController(CompositeController):
             secrets: ExecutionContext.NamespacedNamedSecrets = {}
             for resource in request["related"].get("Secret.v1", {}).values():
                 namespace, name = resource["metadata"]["namespace"], resource["metadata"]["name"]
-                secrets.setdefault(namespace, {})[name] = cast(dict[str, str], resource.get("data", {}))
+                secrets.setdefault(namespace, {})[name] = resource.get("data", {})
             context = ExecutionContext(secrets=secrets)
             values = spec.get_values(context)
             children = spec.generate(request["parent"]["metadata"]["name"], values, context)
