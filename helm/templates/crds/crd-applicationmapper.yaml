@@ -12,6 +12,9 @@ spec:
     listKind: ApplicationMapperList
     plural: applicationmappers
     singular: applicationmapper
+    shortNames:
+    - am
+    - appmap
   scope: Cluster
   versions:
     - name: v1alpha1
