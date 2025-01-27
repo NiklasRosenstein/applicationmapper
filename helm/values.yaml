@@ -13,6 +13,6 @@ deployment:
   install: true
   image:
     repository: ghcr.io/niklasrosenstein/k8s-applicationmapper
-    tag: "0.0.0"
+    tag: "0.3.1"
     pullPolicy: Always
     pullSecret: ""
